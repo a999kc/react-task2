@@ -1,0 +1,39 @@
+.container {
+  margin: 0 auto;
+}
+
+.header {
+  padding: 24px 0;
+  display: flex;
+  border-bottom: 2px solid #000;
+}
+
+.headerNav {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+.headerLink {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  /* Добавим небольшой отступ для подчеркивания */
+  padding-bottom: 4px;
+}
+
+.headerLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #000; /* Альтернатива border-bottom */
+  transition: width 0.3s ease;
+}
+
+.headerLink:hover::after {
+  width: 100%;
+}
