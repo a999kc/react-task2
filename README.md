@@ -1,69 +1,62 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# react-task
+одностраничное приложение (SPA) для создания, редактирования и управления задачами. Приложение разработано с использованием **React**, **TypeScript** и **Vite**, с архитектурой, основанной на **Feature-Sliced Design (FSD)**.
 
-Currently, two official plugins are available:
+## Функциональность
+- Создание задач с указанием:
+  - заголовка
+  - описания
+  - категории (`Bug`, `Feature`, `Documentation`, `Refactor`, `Test`)
+  - статуса (`To Do`, `In Progress`, `Done`)
+  - приоритета (`Low`, `Medium`, `High`)
+- Редактирование существующих задач
+- Удаление задач
+- Визуальное отображение задач с цветовой маркировкой по статусу, категории и приоритету
+- Поддержка даты создания и редактирования
+- Простая имитация API с помощью **Fake API**
+- Глобальный стор для храниния состояния массива задач и методов, для управления ими на базе Zustand
+## 📦 Установка и запуск проекта
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+# 1. Клонируйте репозиторий
+git clone https://github.com/a999kc/react-task2.git
+cd task-tracker
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+# 2. Установите зависимости
+npm install
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# 3. Запустите локальный сервер
+npm run dev
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+# 4. Сборка для продакшена
+npm run build
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+# Используемые технологии и подходы
+React + TypeScript — основной стек для разработки SPA
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+Vite — быстрый и современный сборщик
+
+Feature-Sliced Design (FSD) — архитектурный подход с разделением по слоям: features/, pages/
+
+CSS Modules — модульные стили (*.module.css) для изоляции и переиспользования CSS
+
+Zustand — легковесный менеджер состояния
+
+Fake API — внутренняя имитация CRUD-операций с задачами без внешнего сервера
+
+ESLint + Prettier — линтинг и автоформатирование кода
+
+Autoprefixer — автоматическое добавление вендорных префиксов для кроссбраузерности
+
+# Компоненты
+TaskForm — форма создания и редактирования задач. Поддерживает валидацию и преобразование полей.
+
+TaskItem — карточка задачи с визуальной маркировкой и действиями (удалить, редактировать).
+
+TaskList  — отображает список всех задач.
+
+Zustand — выступает в роли хранилища, реализует addTask, updateTask, deleteTask, setTasks.
+
